@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bkl0g5hk5ech3"]
+
+[ext_resource type="Script" uid="uid://cicwdt8widva0" path="res://scripts/game_manager.gd" id="1_6kl7x"]
+[ext_resource type="ArrayMesh" uid="uid://cgdnk2wqkjyhx" path="res://assets/planets/RP-0002-N.obj" id="1_jiwm1"]
+[ext_resource type="ArrayMesh" uid="uid://bjcooqoebqr42" path="res://assets/planets/SE-0003-N.obj" id="2_6kl7x"]
+[ext_resource type="PackedScene" uid="uid://crrtpgxk10ku7" path="res://scenes/spaceship.tscn" id="3_jiwm1"]
+
+[node name="Node3D" type="Node3D" unique_id=1084650001]
+script = ExtResource("1_6kl7x")
+
+[node name="Sun" type="MeshInstance3D" parent="." unique_id=1887786492]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = ExtResource("1_jiwm1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sun" unique_id=1483036956]
+light_energy = 100.0
+light_size = 1.0
+
+[node name="Se0003N" type="MeshInstance3D" parent="." unique_id=1577078227]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 196.67076, 1.2843671, -1.6054101)
+mesh = ExtResource("2_6kl7x")
+
+[node name="Spaceship" parent="." unique_id=1353573247 instance=ExtResource("3_jiwm1")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 224.98372, 9.138212, -27.705648)
+
+[node name="Camera3D" type="Camera3D" parent="Spaceship" unique_id=1264981567]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.87854767, -2.8453293)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://crrtpgxk10ku7"]
+
+[ext_resource type="Script" uid="uid://c3qqipuchgjo4" path="res://scripts/spaceship.gd" id="1_ae4p7"]
+[ext_resource type="PackedScene" uid="uid://n7vpotlgayfv" path="res://assets/spaceship/Ship.fbx" id="1_yqmju"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yqmju"]
+height = 1.9716797
+
+[node name="Spaceship" type="CharacterBody3D" unique_id=1353573247]
+script = ExtResource("1_ae4p7")
+
+[node name="Visual" parent="." unique_id=2002807123 instance=ExtResource("1_yqmju")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=467790309]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.3669887e-08, -0.5415039)
+shape = SubResource("CapsuleShape3D_yqmju")
