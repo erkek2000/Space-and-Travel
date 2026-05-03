@@ -1,5 +1,8 @@
 extends Node3D
 
+enum MovementMode { SOFTCORE, REALISTIC }
+
+var movement_mode : MovementMode = MovementMode.SOFTCORE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

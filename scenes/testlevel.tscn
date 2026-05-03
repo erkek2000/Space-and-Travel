@@ -6,6 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://se2xhgysdbnl" path="res://assets/planets/RP-0002-N.png" id="2_hyqgw"]
 [ext_resource type="PackedScene" uid="uid://crrtpgxk10ku7" path="res://scenes/spaceship.tscn" id="3_jiwm1"]
 [ext_resource type="Texture2D" uid="uid://dnlulg5go8gmb" path="res://assets/planets/SE-0003-N.png" id="4_bx6wm"]
+[ext_resource type="Texture2D" uid="uid://bl3ph2twhcuva" path="res://assets/planets/NL-0001-N.png" id="7_d1tnr"]
+[ext_resource type="ArrayMesh" uid="uid://bbvh84mlexsfn" path="res://assets/planets/NL-0001-N.obj" id="8_ylnb8"]
+[ext_resource type="Texture2D" uid="uid://btm81xlojhgaw" path="res://assets/planets/SE-0005-N.png" id="9_4k8th"]
+[ext_resource type="ArrayMesh" uid="uid://ct8512otx53as" path="res://assets/planets/SE-0005-N.obj" id="10_86ygi"]
+[ext_resource type="Texture2D" uid="uid://drujul78s0twc" path="res://assets/planets/SE-0009-N.png" id="11_sptfc"]
+[ext_resource type="ArrayMesh" uid="uid://r5maviceon4i" path="res://assets/planets/SE-0009-N.obj" id="12_xnipy"]
+[ext_resource type="Texture2D" uid="uid://b580w5p8fleju" path="res://assets/planets/SE-0006-N.png" id="13_ovtu5"]
+[ext_resource type="ArrayMesh" uid="uid://d0w6pnno1qg6a" path="res://assets/planets/SE-0006-N.obj" id="14_13qpb"]
+[ext_resource type="Texture2D" uid="uid://7aab1cfmtall" path="res://assets/planets/GG-0002-N.png" id="15_eghoi"]
+[ext_resource type="ArrayMesh" uid="uid://be81xhbhmgiuu" path="res://assets/planets/GG-0002-N.obj" id="16_xhaer"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fljaa"]
 albedo_color = Color(1, 1, 1, 0)
@@ -19,28 +29,70 @@ albedo_texture = ExtResource("4_bx6wm")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o40l3"]
 albedo_texture = ExtResource("4_bx6wm")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csw3h"]
+albedo_texture = ExtResource("7_d1tnr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2js2i"]
+albedo_texture = ExtResource("9_4k8th")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nx4cp"]
+albedo_texture = ExtResource("11_sptfc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcbpc"]
+albedo_texture = ExtResource("13_ovtu5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fega"]
+albedo_texture = ExtResource("15_eghoi")
+
 [node name="Node3D" type="Node3D" unique_id=1084650001]
 script = ExtResource("1_6kl7x")
-
-[node name="Sun" type="MeshInstance3D" parent="." unique_id=1887786492]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-material_overlay = SubResource("StandardMaterial3D_fljaa")
-cast_shadow = 0
-mesh = ExtResource("1_jiwm1")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Sun" unique_id=1483036956]
-light_energy = 1500.0
-light_size = 1.0
-omni_range = 1500.0
-
-[node name="Se0003N" type="MeshInstance3D" parent="." unique_id=1577078227]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 590.2761, 1.2843671, -1.6054101)
-material_override = SubResource("StandardMaterial3D_cu7rf")
-material_overlay = SubResource("StandardMaterial3D_o40l3")
-mesh = ExtResource("2_6kl7x")
 
 [node name="Spaceship" parent="." unique_id=1353573247 instance=ExtResource("3_jiwm1")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 588.65936, 9.138212, -27.705648)
 
 [node name="Camera3D" type="Camera3D" parent="Spaceship" unique_id=1264981567]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.87854767, -2.8453293)
+
+[node name="Planets" type="Node3D" parent="." unique_id=1703538395]
+
+[node name="Sun" type="MeshInstance3D" parent="Planets" unique_id=1887786492]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+material_overlay = SubResource("StandardMaterial3D_fljaa")
+cast_shadow = 0
+mesh = ExtResource("1_jiwm1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Planets/Sun" unique_id=1483036956]
+light_energy = 1500.0
+light_size = 1.0
+omni_range = 99999.0
+
+[node name="Se0003N" type="MeshInstance3D" parent="Planets" unique_id=1577078227]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 590.2761, 1.2843671, -1.6054101)
+material_override = SubResource("StandardMaterial3D_cu7rf")
+material_overlay = SubResource("StandardMaterial3D_o40l3")
+mesh = ExtResource("2_6kl7x")
+
+[node name="Nl0001N" type="MeshInstance3D" parent="." unique_id=1559311314]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1604.405, 43.82489, 350.39938)
+material_override = SubResource("StandardMaterial3D_csw3h")
+mesh = ExtResource("8_ylnb8")
+
+[node name="Se0005N" type="MeshInstance3D" parent="." unique_id=221993873]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106.409, 90.84245, 887.60834)
+material_override = SubResource("StandardMaterial3D_2js2i")
+mesh = ExtResource("10_86ygi")
+
+[node name="Se0009N" type="MeshInstance3D" parent="." unique_id=1742968156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1082.321, 305.71136, 187.11627)
+material_override = SubResource("StandardMaterial3D_nx4cp")
+mesh = ExtResource("12_xnipy")
+
+[node name="Se0006N" type="MeshInstance3D" parent="." unique_id=473329420]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1343.8627, 305.5417, 298.64883)
+material_override = SubResource("StandardMaterial3D_gcbpc")
+mesh = ExtResource("14_13qpb")
+
+[node name="Gg0002N" type="MeshInstance3D" parent="." unique_id=81919435]
+transform = Transform3D(23, 0, 0, 0, 23, 0, 0, 0, 23, 2021.0583, 306.92676, 82.048706)
+material_overlay = SubResource("StandardMaterial3D_5fega")
+mesh = ExtResource("16_xhaer")

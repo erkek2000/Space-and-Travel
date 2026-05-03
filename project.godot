@@ -15,6 +15,10 @@ run/main_scene="uid://bkl0g5hk5ech3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://cicwdt8widva0"
+
 [input]
 
 move_left={
@@ -65,3 +69,4 @@ move_back={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
