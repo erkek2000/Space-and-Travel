@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var thrust_force      : float = 2.0
-@export var max_speed         : float = 10.0
+@export var max_speed         : float = 40.0
 @export var roll_speed        : float = 1.5
 @export var turn_speed        : float = 1.5        # softcore A/D yaw speed
 @export var mouse_sensitivity : float = 0.002
