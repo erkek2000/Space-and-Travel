@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var thrust_force      : float = 2.0
-@export var max_speed         : float = 40.0
+@export var max_speed         : float = 20.0
 @export var roll_speed        : float = 1.5
 @export var turn_speed        : float = 1.5        # softcore A/D yaw speed
 @export var mouse_sensitivity : float = 0.002
@@ -65,10 +65,4 @@ func _apply_thrust_realistic(delta: float) -> void:
 	direction += transform.basis.y * Input.get_axis("move_down", "move_up")
 
 	if direction != Vector3.ZERO:
-		_engines_started = true
 		velocity += direction.normalized() * thrust_force * delta
-
-	if velocity.length() > max_speed:
-		velocity = velocity.normalized() * max_speed
-	elif _engines_started and velocity.length() < max_speed and direction == Vector3.ZERO:
-		velocity = velocity.move_toward(velocity.normalized() * max_speed, thrust_force * delta * 0.3)

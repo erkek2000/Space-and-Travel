@@ -21,7 +21,7 @@
 albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("2_hyqgw")
 emission_enabled = true
-emission = Color(1, 1, 1, 1)
+emission = Color(1, 1, 0, 1)
 emission_energy_multiplier = 23.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu7rf"]
@@ -68,32 +68,32 @@ light_size = 1.0
 omni_range = 99999.0
 
 [node name="Se0003N" type="MeshInstance3D" parent="Planets" unique_id=1577078227]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 590.2761, 1.2843671, -1.6054101)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 601.63214, 1.2843671, -1.6054101)
 material_override = SubResource("StandardMaterial3D_cu7rf")
 material_overlay = SubResource("StandardMaterial3D_o40l3")
 mesh = ExtResource("2_6kl7x")
 
-[node name="Nl0001N" type="MeshInstance3D" parent="." unique_id=1559311314]
+[node name="Nl0001N" type="MeshInstance3D" parent="Planets" unique_id=1559311314]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1604.405, 43.82489, 350.39938)
 material_override = SubResource("StandardMaterial3D_csw3h")
 mesh = ExtResource("8_ylnb8")
 
-[node name="Se0005N" type="MeshInstance3D" parent="." unique_id=221993873]
+[node name="Se0005N" type="MeshInstance3D" parent="Planets" unique_id=221993873]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106.409, 90.84245, 887.60834)
 material_override = SubResource("StandardMaterial3D_2js2i")
 mesh = ExtResource("10_86ygi")
 
-[node name="Se0009N" type="MeshInstance3D" parent="." unique_id=1742968156]
+[node name="Se0009N" type="MeshInstance3D" parent="Planets" unique_id=1742968156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1082.321, 305.71136, 187.11627)
 material_override = SubResource("StandardMaterial3D_nx4cp")
 mesh = ExtResource("12_xnipy")
 
-[node name="Se0006N" type="MeshInstance3D" parent="." unique_id=473329420]
+[node name="Se0006N" type="MeshInstance3D" parent="Planets" unique_id=473329420]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1343.8627, 305.5417, 298.64883)
 material_override = SubResource("StandardMaterial3D_gcbpc")
 mesh = ExtResource("14_13qpb")
 
-[node name="Gg0002N" type="MeshInstance3D" parent="." unique_id=81919435]
+[node name="Gg0002N" type="MeshInstance3D" parent="Planets" unique_id=81919435]
 transform = Transform3D(23, 0, 0, 0, 23, 0, 0, 0, 23, 2021.0583, 306.92676, 82.048706)
 material_overlay = SubResource("StandardMaterial3D_5fega")
 mesh = ExtResource("16_xhaer")
