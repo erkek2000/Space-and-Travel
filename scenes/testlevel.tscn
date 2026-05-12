@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cgdnk2wqkjyhx" path="res://assets/planets/RP-0002-N.obj" id="1_jiwm1"]
 [ext_resource type="ArrayMesh" uid="uid://bjcooqoebqr42" path="res://assets/planets/SE-0003-N.obj" id="2_6kl7x"]
 [ext_resource type="Texture2D" uid="uid://se2xhgysdbnl" path="res://assets/planets/RP-0002-N.png" id="2_hyqgw"]
+[ext_resource type="Script" uid="uid://dwqgarxq23jcp" path="res://scripts/physics_mode_toggle.gd" id="2_ylnb8"]
 [ext_resource type="PackedScene" uid="uid://crrtpgxk10ku7" path="res://scenes/spaceship.tscn" id="3_jiwm1"]
 [ext_resource type="Texture2D" uid="uid://dnlulg5go8gmb" path="res://assets/planets/SE-0003-N.png" id="4_bx6wm"]
 [ext_resource type="Texture2D" uid="uid://bl3ph2twhcuva" path="res://assets/planets/NL-0001-N.png" id="7_d1tnr"]
@@ -47,6 +48,9 @@ albedo_texture = ExtResource("15_eghoi")
 
 [node name="Node3D" type="Node3D" unique_id=1084650001]
 script = ExtResource("1_6kl7x")
+
+[node name="PhysicsModeToggle" type="Node3D" parent="." unique_id=1193071993]
+script = ExtResource("2_ylnb8")
 
 [node name="Spaceship" parent="." unique_id=1353573247 instance=ExtResource("3_jiwm1")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 588.65936, 9.138212, -27.705648)
