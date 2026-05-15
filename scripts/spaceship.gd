@@ -2,19 +2,25 @@ extends CharacterBody3D
 
 @export var thrust_force      : float = 2.0
 @export var max_speed         : float = 20.0
-@export var roll_speed        : float = 1.5
-@export var turn_speed        : float = 1.5
+@export var turn_speed        : float = 0.3
+@export var roll_speed        : float = 0.3
 @export var velocity_redirect : float = 2.0
 
-@onready var down_gas      : Node3D = %DownGas
-@onready var up_gas        : Node3D = %UpGas
-@onready var left_gas      : Node3D = %LeftGas
-@onready var right_gas     : Node3D = %RightGas
-@onready var roll_left_gas : Node3D = %RollLeftGas
-@onready var roll_right_gas: Node3D = %RollRightGas
-@onready var thrust_gas: Node3D = %ThrustGas
+@onready var down_gas       : Node3D = %DownGas
+@onready var up_gas         : Node3D = %UpGas
+@onready var left_gas       : Node3D = %LeftGas
+@onready var right_gas      : Node3D = %RightGas
+@onready var roll_left_gas  : Node3D = %RollLeftGas
+@onready var roll_right_gas : Node3D = %RollRightGas
+@onready var thrust_gas     : Node3D = %ThrustGas
 
 var _engines_started : bool = false
+
+
+# Realistic mode — accumulated rotation velocities
+var _yaw_vel   : float = 0.0
+var _pitch_vel : float = 0.0
+var _roll_vel  : float = 0.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -22,6 +28,25 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+	# Each press adds or subtracts a fixed angular impulse — no decay
+	if event.is_action_pressed("move_left"):
+		_yaw_vel += turn_speed
+	if event.is_action_pressed("move_right"):
+		_yaw_vel -= turn_speed
+	if event.is_action_pressed("move_forward"):
+		_pitch_vel -= turn_speed
+	if event.is_action_pressed("move_back"):
+		_pitch_vel += turn_speed
+	if event.is_action_pressed("roll_left"):
+		_roll_vel += roll_speed
+	if event.is_action_pressed("roll_right"):
+		_roll_vel -= roll_speed
+
+func _apply_rotation(delta: float) -> void:
+	rotate_object_local(Vector3.UP,      _yaw_vel   * delta)
+	rotate_object_local(Vector3.RIGHT,   _pitch_vel * delta)
+	rotate_object_local(Vector3.FORWARD, _roll_vel  * delta)
 
 func _physics_process(delta: float) -> void:
 	_apply_rotation(delta)
@@ -34,39 +59,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _apply_rotation(delta: float) -> void:
-	# Q/E roll always
-	var roll_input := Input.get_axis("roll_right", "roll_left")
-	rotate_object_local(Vector3.FORWARD, roll_input * roll_speed * delta)
-
-	# A/D yaw the ship left/right in both modes
-	var yaw_input := Input.get_axis("move_right", "move_left")
-	rotate_object_local(Vector3.UP, yaw_input * turn_speed * delta)
-
-	# W/S pitch the ship up/down in both modes
-	var pitch_input := Input.get_axis("move_forward", "move_back")
-	rotate_object_local(Vector3.RIGHT, pitch_input * turn_speed * delta)
-
 func _update_thrusters() -> void:
-	var thrusting : bool  = Input.is_action_pressed("thrust")
-	var roll      : float = Input.get_axis("roll_left", "roll_right")
-	var pitch     : float = Input.get_axis("move_forward", "move_back")
-	var yaw       : float = Input.get_axis("move_left", "move_right")
+	var thrusting : bool = Input.is_action_pressed("thrust")
 
-	# Thrust gas — main engine, space bar
 	thrust_gas.visible = thrusting
 
-	# Pitch gas — W/S rotates ship
-	up_gas.visible   = pitch < 0.0
-	down_gas.visible = pitch > 0.0
-
-	# Yaw gas — A/D rotates ship
-	left_gas.visible  = yaw < 0.0
-	right_gas.visible = yaw > 0.0
-
-	# Roll gas — Q/E
-	roll_left_gas.visible  = roll < 0.0
-	roll_right_gas.visible = roll > 0.0
+	up_gas.visible         = Input.is_action_just_pressed("move_forward")
+	down_gas.visible       = Input.is_action_just_pressed("move_back")
+	left_gas.visible       = Input.is_action_just_pressed("move_left")
+	right_gas.visible      = Input.is_action_just_pressed("move_right")
+	roll_left_gas.visible  = Input.is_action_just_pressed("roll_left")
+	roll_right_gas.visible = Input.is_action_just_pressed("roll_right")
 
 func _apply_thrust_softcore(delta: float) -> void:
 	if Input.is_action_pressed("thrust"):
