@@ -53,10 +53,7 @@ script = ExtResource("1_6kl7x")
 script = ExtResource("2_ylnb8")
 
 [node name="Spaceship" parent="." unique_id=1353573247 instance=ExtResource("3_jiwm1")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 588.65936, 9.138212, -27.705648)
-
-[node name="Camera3D" type="Camera3D" parent="Spaceship" unique_id=1264981567]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.87854767, -2.8453293)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 588.65936, 9.138212, -27.705648)
 
 [node name="Planets" type="Node3D" parent="." unique_id=1703538395]
 
