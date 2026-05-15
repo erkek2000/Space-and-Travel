@@ -3,14 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://ctwr8glcb7x1y" path="res://assets/VFX/gas/whitePuff00.png" id="1_gy5lb"]
 
 [node name="Node3D" type="Node3D" unique_id=1057788643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.320373, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1939251553]
+modulate = Color(1, 1, 1, 0.28235295)
 texture = ExtResource("1_gy5lb")
 region_enabled = true
 region_rect = Rect2(181.5, 19.5, 42, 265)
 
-[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1002517733]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 0)
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1367982087]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.28235295)
 texture = ExtResource("1_gy5lb")
 region_enabled = true
-region_rect = Rect2(182.5, 32.5, 42, 254)
+region_rect = Rect2(181.5, 19.5, 42, 265)
