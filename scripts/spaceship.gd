@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var thrust_force      : float = 2.0
+@export var thrust_force      : float = 20.0
 @export var max_speed         : float = 20.0
 @export var turn_speed        : float = 0.3
 @export var roll_speed        : float = 0.3
@@ -48,7 +48,21 @@ func _apply_rotation(delta: float) -> void:
 	rotate_object_local(Vector3.RIGHT,   _pitch_vel * delta)
 	rotate_object_local(Vector3.FORWARD, _roll_vel  * delta)
 
+var _last_mode : GameManager.MovementMode = GameManager.MovementMode.SOFTCORE
+
 func _physics_process(delta: float) -> void:
+	# Detect mode switch
+	if GameManager.movement_mode != _last_mode:
+		if GameManager.movement_mode == GameManager.MovementMode.SOFTCORE:
+			# Wipe all rotational inertia
+			_yaw_vel   = 0.0
+			_pitch_vel = 0.0
+			_roll_vel  = 0.0
+			# Hard clamp velocity to softcore max
+			if velocity.length() > max_speed:
+				velocity = velocity.normalized() * max_speed
+		_last_mode = GameManager.movement_mode
+
 	_apply_rotation(delta)
 	_update_thrusters()
 
