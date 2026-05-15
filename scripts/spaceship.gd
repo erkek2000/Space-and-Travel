@@ -12,6 +12,7 @@ extends CharacterBody3D
 @onready var right_gas     : Node3D = %RightGas
 @onready var roll_left_gas : Node3D = %RollLeftGas
 @onready var roll_right_gas: Node3D = %RollRightGas
+@onready var thrust_gas: Node3D = %ThrustGas
 
 var _engines_started : bool = false
 

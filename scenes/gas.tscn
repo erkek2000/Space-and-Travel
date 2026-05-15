@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ctwr8glcb7x1y" path="res://assets/VFX/gas/whitePuff00.png" id="1_gy5lb"]
 
-[node name="Gas" type="Node3D" unique_id=1057788643]
+[node name="Gas" type="Sprite3D" unique_id=1442774518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.320373, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1939251553]
