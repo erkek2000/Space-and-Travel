@@ -48,26 +48,25 @@ func _apply_rotation(delta: float) -> void:
 	rotate_object_local(Vector3.RIGHT, pitch_input * turn_speed * delta)
 
 func _update_thrusters() -> void:
-	var thrusting := Input.is_action_pressed("thrust")
-	var roll      := Input.get_axis("roll_left", "roll_right")
-	var pitch     := Input.get_axis("move_forward", "move_back")
-	var yaw       := Input.get_axis("move_left", "move_right")
+	var thrusting : bool  = Input.is_action_pressed("thrust")
+	var roll      : float = Input.get_axis("roll_left", "roll_right")
+	var pitch     : float = Input.get_axis("move_forward", "move_back")
+	var yaw       : float = Input.get_axis("move_left", "move_right")
 
-	# Forward thruster fires on thrust key
-	down_gas.visible       = thrusting
-	# Retro thruster — not in your node list but ready if you add one
+	# Thrust gas — main engine, space bar
+	thrust_gas.visible = thrusting
 
-	# Roll gas
-	roll_left_gas.visible  = roll < 0.0
-	roll_right_gas.visible = roll > 0.0
+	# Pitch gas — W/S rotates ship
+	up_gas.visible   = pitch < 0.0
+	down_gas.visible = pitch > 0.0
 
-	# Pitch gas (W/S now rotates, so up/down gas fires on pitch)
-	up_gas.visible    = pitch < 0.0
-	down_gas.visible  = pitch > 0.0 or thrusting
-
-	# Yaw gas (A/D rotates)
+	# Yaw gas — A/D rotates ship
 	left_gas.visible  = yaw < 0.0
 	right_gas.visible = yaw > 0.0
+
+	# Roll gas — Q/E
+	roll_left_gas.visible  = roll < 0.0
+	roll_right_gas.visible = roll > 0.0
 
 func _apply_thrust_softcore(delta: float) -> void:
 	if Input.is_action_pressed("thrust"):
